@@ -175,7 +175,7 @@ function minimax(board, maximizer){
                 return;
             }
             else if(!aiPlayer && isWin(temp, empty[i][0], empty[i][1])){
-                temp.value = 98;
+                temp.value = 200 - temp.depth;
                 temp.boardCells[empty[i][0]][empty[i][1]] = "x"
                 temp.move[0] = empty[i][0];
                 temp.move[1] = empty[i][1];
