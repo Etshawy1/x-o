@@ -4,26 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <title>Document</title>
-    <style>
-        table{
-            width: 90vw;
-            height: 90vw;
-            margin: 0 auto;
-        }
-        @media screen and (min-width: 600px){
-            table{
-                width: 80vh;
-                height: 80vh;
-            }
-        }
-        td{
-            background-color: rgb(134, 131, 131);
-        
-        }
-    </style>
 </head>
 <body>
+    <header>
+            <h1 id="win"></h1>
+            <h1 id="lose"></h1>
+            <h1 id="draw"></h1>
+        </header>
     <table>
         <tr>
             <td class="cell" id="00"></td>
@@ -41,6 +30,11 @@
             <td class="cell" id="22"></td>
         </tr>
     </table>
-    <script src="Script.js"></script>
+    <footer>
+        <button class="myButton" id="player-x">Go first</button>
+        <button class="myButton" id="player-o">Go second</button>
+        <button class="myButton2" id="reset" onclick="ResetScore()">Reset Score</button>
+    </footer>
+    <script src="script/Script.js"></script>
 </body>
 </html>
