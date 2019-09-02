@@ -1,127 +1,106 @@
 var mainBoard = {
     boardCells:[['', '', ''], ['', '', ''] ,['', '', '']],
-    value : 0,
-    move:[],
     depth: 0
     };
-//false means x turn true means y turn
-var aiPlayer = false;
-var turn = true;
-var posibilities = [];
+
+var pcPlayer = "x";
+var realPlayer = "o";
 
 var cells = document.getElementsByClassName("cell");
 for (let i = 0; i < cells.length; i++) {
-    cells[i].onclick = draw;
+    cells[i].addEventListener('click', handleEvent(cells[i], realPlayer));
+}
+if(pcPlayer == "x"){
+    randomPcmove();
 }
 
 
-var move = {move:[]};
-move.move.push(Math.round(Math.pow(Math.random(), Math.random()) * 1000) % 3);
-move.move.push(Math.round(Math.pow(Math.random(), Math.random()) * 1000) % 3);
-aiDraw(move);
 
 
+function randomPcmove() {
+    let x = Math.round(Math.pow(Math.random(), Math.random()) * 1000) % 3;
+    let y = Math.round(Math.pow(Math.random(), Math.random()) * 1000) % 3;
+    let obj = document.getElementById(x.toString() + y.toString());
+    draw(obj, pcPlayer, "pc");
+};
 
 
-
-
-
-
-
-function isWin(board, x, y){
-    if(x > 2 || x < 0 || y > 2 || y < 0)
-    {
-        console.log("wrong position");
-        return false;
-    }
-    if(objectAt(board, x, 0) == objectAt(board, x, 1) &&
-     objectAt(board, x, 1) == objectAt(board, x, 2)){
-         return true;
-    }
-    else if(objectAt(board, 0, y) == objectAt(board, 1, y) &&
-    objectAt(board, 1, y) == objectAt(board, 2, y)){
-        return true;
-    }
-    else if( x == y && objectAt(board, 0, 0) == objectAt(board, 1, 1) &&
-    objectAt(board, 1, 1) == objectAt(board, 2, 2)){
-        return true;
-    }
-    else if( x + y == 2 && objectAt(board, 0, 2) == objectAt(board, 1, 1) &&
-    objectAt(board, 1, 1) == objectAt(board, 2, 0)){
-        return true;
-    }
-    else {
-        return false;
-    }
-
+function moveScore(score, x, y){
+    this.score = score;
+    this.x = x;
+    this.y = y;
 }
 
-function copyBoard(original){
-    var copy = {
-        boardCells: original.boardCells.map(function(arr) {
-            return arr.slice();
-        }),
-        value: original.value,
-        move: original.move.slice(),
-        depth: original.depth
-    }
-    return copy;
+function handleEvent(obj, type) {
+    return function() {
+        draw(obj, type, "real"); 
+    };
 }
 
-function objectAt(board, x, y){
-    return board.boardCells[x][y];
+function isWin(board, type){
+    for (let i = 0; i < 3; i++) {
+        if(board.boardCells[i][0] == type && board.boardCells[i][1] == type && board.boardCells[i][2] == type){
+            return true;
+        }
+        else if(board.boardCells[0][i] == type && board.boardCells[1][i] == type && board.boardCells[2][i] == type){
+            return true;
+        }
+    }
+
+    if(board.boardCells[0][0] == type && board.boardCells[1][1] == type && board.boardCells[2][2] == type
+        || board.boardCells[0][2] == type && board.boardCells[1][1] == type && board.boardCells[2][0] == type){
+            return true;
+        }
+    return false;
 }
+
 function isEmpty(board, x, y){
     return (board.boardCells[x][y] == '');
 }
 
-function draw(){
-    posibilities.length = 0;
-    this.style.backgroundSize = "100% 100%";
-    let position = this.getAttribute('id');
+function draw(obj, type, player){
+    obj.style.backgroundSize = "100% 100%";
+    let position = obj.getAttribute('id');
     let x = parseInt(position[0]);
     let y = parseInt(position[1]);
     if(!isEmpty(mainBoard, x, y)){
-        return;
+        return false;
     }
-    if(!turn){
-        this.style.backgroundImage = `url('X.png')`;
+    if(type == "x"){
+        obj.style.backgroundImage = `url('X.png')`;
         mainBoard.boardCells[x][y] = "x";
     }
     else{
-        this.style.backgroundImage = `url('O.png')`;
+        obj.style.backgroundImage = `url('O.png')`;
         mainBoard.boardCells[x][y] = "o";
     }
     
-    if(isWin(mainBoard, x, y)){
-        if(turn){
-            document.write("o player wins");
+    if(isWin(mainBoard, type)){
+        if(player == pcPlayer){
+            document.write("you lose");    
         }
         else{
-            document.write("x player wins");
+            document.write("you win");
         }
         setTimeout(() => {
             location.assign(location.href);
-        }, 2000);
+        }, 1000);
         return;
     }
-    //turn = !turn;
+
     if(emptyCells(mainBoard).length == 0){
         document.write("It's a draw");
         setTimeout(() => {
             location.assign(location.href);
-        }, 2000);
+        }, 1000);
     }
-    minimax(mainBoard, !aiPlayer);
-    var aimove = posibilities[0]
-    for (let i = 1; i < posibilities.length; i++) {
-        if(aimove.value < posibilities[i].value || posibilities[i].value == 99){
-            aimove = posibilities[i];
-        }
+    if(player == "real"){  
+        let bestPcMove = minimax(mainBoard, pcPlayer);
+        let x = bestPcMove.x;
+        let y = bestPcMove.y;
+        let obj = document.getElementById(x.toString() + y.toString());
+        draw(obj, pcPlayer, pcPlayer);
     }
-    setTimeout(() => {
-        aiDraw(aimove)    
-    }, 1000) ;
 }
 
 function emptyCells(board){
@@ -138,62 +117,54 @@ function emptyCells(board){
     return cells;
 }
 
-
-function minimax(board, maximizer){
+// we will assume that the maximizing player is using x and minimizer is using x
+function minimax(board, type){
+    var bestMove = new moveScore(0, -1, -1);
     let empty = emptyCells(board);
-    if( empty.length == 0){
-        posibilities.push(board);
-        return;    
+
+    //if the maximizing player is winning make the score with the winning score of the maximizing player
+    //we subtract the depth so that the best move chosen is the closest node 
+    if(isWin(board, "x")){
+        return (new moveScore(50 - board.depth, -1, -1));
     }
-    if(maximizer){
-        for (let i = 0; i < empty.length; i++) {
-            let temp = copyBoard(board);
-            temp.boardCells[empty[i][0]][empty[i][1]] = "x";
-            temp.move.push(empty[i][0]);
-            temp.move.push(empty[i][1]);
-            temp.depth++;
-            if(!aiPlayer && isWin(temp, empty[i][0], empty[i][1])){
-                temp.value = 100 - temp.depth;
-                posibilities.push(temp);
-                return;
-            }
-            // if the aiplayer was using o and putting x is making the player win
-            else if(aiPlayer && isWin(temp, empty[i][0], empty[i][1])){
-                return;
-            }
-            minimax(temp, !maximizer);
-        }
+    else if(isWin(board,"o")){
+        return (new moveScore(-50 + board.depth, -1, -1));
     }
+
+    //no empty cells thus there is draw and the score is zero for this state
+    else if(empty.length == 0){
+        return (new moveScore(0, -1, -1));
+    }
+
+    //initialize the maximizing player with a very low score
+    if(type == "x"){
+        bestMove.score = -100;
+    }
+    //initialize the minimizing player with a very high score
     else{
-        for (let i = 0; i < empty.length; i++) {
-            let temp = copyBoard(board);
-            temp.boardCells[empty[i][0]][empty[i][1]] = "o";
-            temp.depth++;
-            if(aiPlayer && isWin(temp, empty[i][0], empty[i][1])){
-                temp.value = -100 + temp.depth;
-                posibilities.push(temp);
-                return;
-            }
-            else if(!aiPlayer && isWin(temp, empty[i][0], empty[i][1])){
-                temp.value = 200 - temp.depth;
-                temp.boardCells[empty[i][0]][empty[i][1]] = "x"
-                temp.move[0] = empty[i][0];
-                temp.move[1] = empty[i][1];
-                posibilities.push(temp);
-                return;
-            }
-            minimax(temp, !maximizer);
-            
-        }
+        bestMove.score = 100;
     }
+    //we try every empty cell
+    for (let i = 0; i < empty.length; i++) {
+        board.boardCells[empty[i][0]][empty[i][1]] = type;
+        board.depth++;
+        //now the other player will try to play
+        let possibleMove = minimax(board, type == "x" ? "o" : "x");
+        possibleMove.x = empty[i][0];
+        possibleMove.y = empty[i][1];
+        if(type == "x"){
+            if(possibleMove.score > bestMove.score){
+                bestMove = possibleMove;
+            }
+        }
+        else{
+            if(possibleMove.score < bestMove.score){
+                bestMove = possibleMove;
+            }
+        }
+        board.boardCells[empty[i][0]][empty[i][1]] = '';
+        board.depth--;
+    }
+    return bestMove;
 }
-function aiDraw(move)
-{
-    let x = move.move[0];
-    let y = move.move[1];
-    console.log(x);
-    var dr = document.getElementById(x.toString() + y.toString());
-    dr.style.backgroundSize = "100% 100%";
-    mainBoard.boardCells[x][y] = "x";
-    dr.style.backgroundImage = `url('X.png')`;
-}
+
