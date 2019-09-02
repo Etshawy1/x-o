@@ -208,8 +208,3 @@ footer{
         font-size: 2rem;
     }
 }
-@media screen and (min-width: 900px){
-    td{
-        font-size: 7rem;
-    }
-}
