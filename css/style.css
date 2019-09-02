@@ -47,7 +47,7 @@ td{
     -webkit-box-shadow: 2px 3px 15px -1px rgba(0,0,0,1);
     -moz-box-shadow: 2px 3px 15px -1px rgba(0,0,0,1);
     box-shadow: 2px 3px 15px -1px rgba(0,0,0,1);
-    font-size: 5rem;
+    font-size: 2.5rem;
     text-align: center;
     width: 33%;
     height: 33%;
@@ -187,6 +187,9 @@ footer{
         width: 55vh;
         height: 55vh;
     }
+    td{
+        font-size: 5rem;
+    }
     .myButton{
         float: left;
         font-size: 2em;
@@ -203,5 +206,10 @@ footer{
     }
     header h1{
         font-size: 2rem;
+    }
+}
+@media screen and (min-width: 900px){
+    td{
+        font-size: 7rem;
     }
 }
