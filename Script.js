@@ -3,8 +3,8 @@ var mainBoard = {
     depth: 0
     };
 
-var pcPlayer = "x";
-var realPlayer = "o";
+var pcPlayer = "o";
+var realPlayer = "x";
 
 var cells = document.getElementsByClassName("cell");
 for (let i = 0; i < cells.length; i++) {
