@@ -13,6 +13,7 @@ html{
 body{
     padding: 1%;
     margin: 1%;
+    overflow: hidden;
 }
 section{
     position: absolute;
@@ -28,12 +29,13 @@ section{
     background: -ms-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 0%, rgba(102,102,102,1) 19%, rgba(28,28,28,1) 52%, rgba(0,0,0,1) 77%, rgba(19,19,19,1) 100%);
     background: linear-gradient(to bottom, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 0%, rgba(102,102,102,1) 19%, rgba(28,28,28,1) 52%, rgba(0,0,0,1) 77%, rgba(19,19,19,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313', GradientType=0 );
+    overflow: hidden;
 }
 section h1{
     text-align: center;
     font-family: Georgia, 'Times New Roman', Times, serif;
-    font-size: 10vmin;
-    margin-top: 10vh;
+    font-size: 9vmin;
+    margin: 5vh auto;
     color: rgb(0, 0, 0);
     letter-spacing: 0.5vmin;
     text-shadow: 0.5vmin 0.2vmin 0px #FFFFFF, 1vmin 1vmin 0px rgba(0,0,0,0.15);
@@ -252,8 +254,8 @@ footer{
 	color:#000000;
 	font-size: 1.5em;
     line-height: 1.5em;
-    margin: 4vh 27vw;
-    width: 40vw;
+    margin: 4vh 16vw;
+    width: 60vw;
     padding: 0px;
     text-align: center;
 	font-weight:bold;
@@ -287,6 +289,7 @@ footer{
         font-size: 2em;
         margin: 4vh 4%;
         width: 40%;
+        margin-bottom: 0px;
     }
     .myButton2{
         margin: 0px 25%;
