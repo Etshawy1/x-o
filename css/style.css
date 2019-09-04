@@ -14,6 +14,99 @@ body{
     padding: 1%;
     margin: 1%;
 }
+section{
+    position: absolute;
+    top:0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgba(76,76,76,1);
+    background: -moz-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 0%, rgba(102,102,102,1) 19%, rgba(28,28,28,1) 52%, rgba(0,0,0,1) 77%, rgba(19,19,19,1) 100%);
+    background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(76,76,76,1)), color-stop(0%, rgba(89,89,89,1)), color-stop(19%, rgba(102,102,102,1)), color-stop(52%, rgba(28,28,28,1)), color-stop(77%, rgba(0,0,0,1)), color-stop(100%, rgba(19,19,19,1)));
+    background: -webkit-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 0%, rgba(102,102,102,1) 19%, rgba(28,28,28,1) 52%, rgba(0,0,0,1) 77%, rgba(19,19,19,1) 100%);
+    background: -o-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 0%, rgba(102,102,102,1) 19%, rgba(28,28,28,1) 52%, rgba(0,0,0,1) 77%, rgba(19,19,19,1) 100%);
+    background: -ms-linear-gradient(top, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 0%, rgba(102,102,102,1) 19%, rgba(28,28,28,1) 52%, rgba(0,0,0,1) 77%, rgba(19,19,19,1) 100%);
+    background: linear-gradient(to bottom, rgba(76,76,76,1) 0%, rgba(89,89,89,1) 0%, rgba(102,102,102,1) 19%, rgba(28,28,28,1) 52%, rgba(0,0,0,1) 77%, rgba(19,19,19,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#4c4c4c', endColorstr='#131313', GradientType=0 );
+}
+section h1{
+    text-align: center;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 10vmin;
+    margin-top: 10vh;
+    color: rgb(0, 0, 0);
+    letter-spacing: 0.5vmin;
+    text-shadow: 0.5vmin 0.2vmin 0px #FFFFFF, 1vmin 1vmin 0px rgba(0,0,0,0.15);
+}
+section button {
+    -webkit-border-radius: 0.3em;
+    -moz-border-radius: 0.3em;
+    border-radius: 0.3em;
+    font-family: Georgia;
+    color: #000000;
+    font-size: 10vmin;
+    width: 60vw;
+    display: block;
+    margin: 10vh auto;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background 1s ease-in;
+}
+#easy{
+    color: rgb(255, 217, 0);
+    background: #001ec5;
+    background-image: -webkit-linear-gradient(top, #001ec5, #000546);
+    background-image: -moz-linear-gradient(top, #001ec5, #000546);
+    background-image: -ms-linear-gradient(top, #001ec5, #000546);
+    background-image: -o-linear-gradient(top, #001ec5, #000546);
+    background-image: linear-gradient(to bottom, #001ec5, #000546);
+}
+#easy:hover{
+    background: #001ec5;
+    background-image: -webkit-linear-gradient(top, #000546, #001ec5);
+    background-image: -moz-linear-gradient(top, #000546, #001ec5);
+    background-image: -ms-linear-gradient(top, #000546, #001ec5);
+    background-image: -o-linear-gradient(top, #000546, #001ec5);
+    background-image: linear-gradient(to bottom, #000546, #001ec5);
+}
+
+#medium{
+    color: #FFF;
+    background: #119600;
+    background-image: -webkit-linear-gradient(top, #119600, #084600);
+    background-image: -moz-linear-gradient(top, #119600, #084600);
+    background-image: -ms-linear-gradient(top, #119600, #084600);
+    background-image: -o-linear-gradient(top, #119600, #084600);
+    background-image: linear-gradient(to bottom, #119600, #084600);
+    
+}
+#medium:hover{
+    background: #084600;
+    background-image: -webkit-linear-gradient(top, #084600, #119600);
+    background-image: -moz-linear-gradient(top, #084600, #119600);
+    background-image: -ms-linear-gradient(top, #084600, #119600);
+    background-image: -o-linear-gradient(top, #084600, #119600);
+    background-image: linear-gradient(to bottom, #084600, #119600);
+}
+#hard{
+    background: #f33030;
+    background-image: -webkit-linear-gradient(top, #f33030, #8c0000);
+    background-image: -moz-linear-gradient(top, #f33030, #8c0000);
+    background-image: -ms-linear-gradient(top, #f33030, #8c0000);
+    background-image: -o-linear-gradient(top, #f33030, #8c0000);
+    background-image: linear-gradient(to bottom, #f33030, #8c0000);
+    text-shadow: 0 -0.1vmin 1vmin #FFF, 0 -0.5vmin 1vmin #ff0, 0 -1vmin 1vmin #ff8000, 0 -3vmin 4vmin #F20;
+    margin-bottom: 0px;
+}  
+#hard:hover {
+    background: #f33030;
+    background-image: -webkit-linear-gradient(top, #8c0000, #f33030);
+    background-image: -moz-linear-gradient(top, #8c0000, #f33030);
+    background-image: -ms-linear-gradient(top, #8c0000, #f33030);
+    background-image: -o-linear-gradient(top, #8c0000, #f33030);
+    background-image: linear-gradient(to bottom, #8c0000, #f33030);
+}
+
 header{
     width: 100%;
     margin: 0.5% auto;
@@ -30,8 +123,8 @@ header h1{
        
 }
 table{
-    width: 60vw;
-    height: 60vw;
+    width: 70vmin;
+    height: 70vmin;
     margin: 0 auto;
     padding: 0;
 }
@@ -44,18 +137,18 @@ td{
     background: -ms-linear-gradient(-45deg, rgba(237,70,44,1) 0%, rgba(241,44,9,1) 0%, rgba(212,31,8,1) 49%, rgba(241,44,9,1) 99%, rgba(241,44,9,1) 100%);
     background: linear-gradient(135deg, rgba(237,70,44,1) 0%, rgba(241,44,9,1) 0%, rgba(212,31,8,1) 49%, rgba(241,44,9,1) 99%, rgba(241,44,9,1) 100%);
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ed462c', endColorstr='#f12c09', GradientType=1 );
-    -webkit-box-shadow: 2px 3px 15px -1px rgba(0,0,0,1);
-    -moz-box-shadow: 2px 3px 15px -1px rgba(0,0,0,1);
-    box-shadow: 2px 3px 15px -1px rgba(0,0,0,1);
-    font-size: 2rem;
+    -webkit-box-shadow: 0.5vmin 0.8vmin 2vmin -0.2vmin rgba(0,0,0,1);
+    -moz-box-shadow: 0.5vmin 0.8vmin 2vmin -0.2vmin rgba(0,0,0,1);
+    box-shadow: 0.5vmin 0.8vmin 2vmin -0.2vmin rgba(0,0,0,1);
+    font-size: 10vmin;
     text-align: center;
     width: 33%;
     height: 33%;
-    border: 3px solid rgba(148, 24, 13, 0.897);
-    border-radius: 5%;
+    border: 0.3vmin solid rgba(148, 24, 13, 0.897);
+    border-radius: 1.3vmin;
     font-family: Georgia, 'Times New Roman', Times, serif;
     color: rgb(1, 0, 77);
-    text-shadow: 0 -1px 4px #FFF, 0 -2px 10px #ff0, 0 -10px 20px #ff8000, 0 -18px 40px #F00;
+    text-shadow: 0 -0.2vmin 1vmin #FFF, 0 -0.2vmin 1vmin #ff0, 0 -1vmin 4vmin #ff8000, 0 -9vmin 18vmin #F00;
     cursor: pointer;
 
 }
@@ -72,7 +165,7 @@ td{
     text-shadow: none;
 }
 .inactive-cells{
-    opacity: 0.6;
+    opacity: 0.5;
     cursor: not-allowed;
 }
 footer{
@@ -91,10 +184,10 @@ footer{
 	background:linear-gradient(to bottom, #7892c2 5%, #476e9e 100%);
 	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#7892c2', endColorstr='#476e9e',GradientType=0);
 	background-color:#7892c2;
-	-moz-border-radius:10px;
-	-webkit-border-radius:10px;
-	border-radius:10px;
-    border:1px solid #4e6096;
+	-moz-border-radius:0.4em;
+	-webkit-border-radius:0.4em;
+	border-radius:0.4em;
+    border:0.05em solid #4e6096;
     color: rgba(0,0,0,1);
 	display:block;
 	cursor:pointer;
@@ -102,13 +195,12 @@ footer{
     font-weight: bold;
     font-size: 1.5em;
     line-height: 1.5em;
-    margin: 1em auto;
+    margin: 4vh auto;
     width: 70%;
     height: 30%;
     padding: 0px;
     text-align: center;
     text-decoration: none;
-    text-shadow: 0px 1px 0px #283966;
 }
 .myButton:hover {
 	background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #476e9e), color-stop(1, #7892c2));
@@ -126,10 +218,11 @@ footer{
 }
 
 .inactive{
-    cursor: not-allowed;
+    cursor: default;
     background: rgb(134, 130, 129);
     color: rgba(0, 0, 0, 0.521);
     border: none;
+    opacity: 0;
     
 }
 .inactive:hover{
@@ -152,14 +245,14 @@ footer{
 	background-color:#f24537;
 	-moz-border-radius:6px;
 	-webkit-border-radius:6px;
-	border-radius:6px;
-	border:1px solid #d02718;
+	border-radius:0.5em;
+	border:0.05em solid #d02718;
 	display:inline-block;
 	cursor:pointer;
 	color:#000000;
 	font-size: 1.5em;
     line-height: 1.5em;
-    margin: 0 27vw;
+    margin: 4vh 27vw;
     width: 40vw;
     padding: 0px;
     text-align: center;
@@ -181,23 +274,23 @@ footer{
 	position:relative;
 	top:1px;
 }
-
+#player-o{
+    margin-bottom: 0px;
+}
 @media screen and (min-width: 600px){
     table{
-        width: 55vh;
-        height: 55vh;
-    }
-    td{
-        font-size: 5rem;
+        width: 60vmin;
+        height: 60vmin;
     }
     .myButton{
         float: left;
         font-size: 2em;
-        margin: 0.3em 4%;
+        margin: 4vh 4%;
         width: 40%;
     }
     .myButton2{
-        margin: 0 25%;
+        margin: 0px 25%;
+        margin-top: 4vmin;
         font-size: 2em;
         width: 50%;
     }
